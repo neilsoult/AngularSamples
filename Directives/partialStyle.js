@@ -1,41 +1,5 @@
   angular.module('testApp', []).
     /*
-    * global navLink directive
-    *
-    * bind navigation link to any element
-    *
-    * usage:
-    * <button nav-link="/location"></button>
-    * clicking on the button will take the user to /location
-    *
-    *
-    * */
-    directive('navLink', ['$location',
-        function ($location) {
-            return {
-                restrict: 'A',
-                link: function (scope, element, attrs) {
-                    var path;
-                    attrs.$observe('navLink', function (val) { // we observe the value in case the value is changed dynamically
-                        path = val;
-                    });
-                    element.bind('click',
-                        function clickHandler () {
-                            scope.$apply(
-                                function apply () {
-                                    $location.url(path);
-                                    if (attrs.callback && typeof scope[attrs.callback] === 'function') {
-                                        scope[attrs.callback]();
-                                    }
-                                }
-                            );
-                        }
-                    );
-                }
-            };
-        }
-    ])
-    /*
      directive to inject <link> elements into the head of the page from
      anywhere within html templates.  This works in conjunction with the
      factory 'removePartialStyles' so that previous partial styles are
@@ -70,5 +34,4 @@
                 }
             };
         }
-    ])
-    ;
+    ]);
